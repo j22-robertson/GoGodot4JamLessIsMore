@@ -15,17 +15,21 @@ func _ready():
 
 func enable():
 	rigid_body.set_physics_process( true)
-	$Enemy_Body/CollisionShape2D.disabled = false;
+	$Enemy_Body/CollisionShape2D.set_deferred("disabled", false);
 	$Enemy_Body/AnimatedSprite2D.play()
+	rigid_body.respawn()
 	
 	visible = true
 	pass
 
+
 func disable():
+	
 	rigid_body.set_physics_process(false)
 	$Enemy_Body/CollisionShape2D.set_deferred("disabled", true);
 	$Enemy_Body/AnimatedSprite2D.pause()
 	hide()
+
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 

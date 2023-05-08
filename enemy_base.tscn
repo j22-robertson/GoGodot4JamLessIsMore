@@ -17,7 +17,7 @@ script = ExtResource("2_y2ae4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy_Body"]
 scale = Vector2(0.974359, 1.01963)
 sprite_frames = ExtResource("2_hyw18")
-frame_progress = 0.919062
+frame_progress = 0.739712
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Body"]
 scale = Vector2(1.5, 1.5)

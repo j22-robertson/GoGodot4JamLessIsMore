@@ -8,7 +8,6 @@ var enemy_pool : Array;
 @export var duration_between_spawns = 5.0;
 var timer = 0.0;
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -26,6 +25,7 @@ func init_pool():
 func spawn_enemy():
 	var obj = enemy_pool.pop_back();
 	obj.target = target;
+	#obj.parent = self;
 	obj.enable();
 	return obj
 	pass
@@ -49,7 +49,10 @@ func _process(delta):
 	pass
 
 
-
+func _on_refund(obj):
+	obj.disable()
+	enemy_pool.push_back(obj)
+	pass
 
 func _on_level_player_spawned(player):
 	target = player;

@@ -26,7 +26,7 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body: Node2D):
-	body.get_parent().disable()
+	body.get_parent().get_parent()._on_refund(body.get_parent())
 	
 	
 	pass # Replace with function body.

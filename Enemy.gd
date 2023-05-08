@@ -3,6 +3,8 @@ var velocity : Vector2 = Vector2.DOWN;
 @export var speed =100;
 var setup : bool = false;
 var target: Node2D;
+var parent : Node2D;
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

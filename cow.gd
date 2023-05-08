@@ -16,7 +16,12 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-
+func respawn():
+	var x = randf_range(-1920.0,1920.0)
+	var y= randf_range(-1080.0,1080.0)
+	var new_position = Vector2(x,y);
+	move_and_collide(new_position)
+	pass
 
 func _physics_process(delta):
 	if position.distance_to(target.get_player_position())>10.0 && !charge:
