@@ -33,15 +33,15 @@ animations = [{
 [node name="Player" type="Node2D"]
 script = ExtResource("1_8r2ir")
 
-[node name="Player" type="RigidBody2D" parent="."]
+[node name="PlayerBody" type="RigidBody2D" parent="."]
 gravity_scale = 0.0
 script = ExtResource("1_pum21")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerBody"]
 sprite_frames = SubResource("SpriteFrames_i07he")
 script = ExtResource("4_njlqr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody"]
 shape = SubResource("CircleShape2D_3vi2e")
 
-[node name="Weapon" parent="Player" instance=ExtResource("5_ar6qf")]
+[node name="Weapon" parent="PlayerBody" instance=ExtResource("5_ar6qf")]
