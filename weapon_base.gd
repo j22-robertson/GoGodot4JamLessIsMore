@@ -25,9 +25,7 @@ func _process(delta):
 	pass
 
 
-func _on_area_2d_body_entered(body: Node2D):
-	body.get_parent().get_parent()._on_refund(body.get_parent())
-	
-	
+func _on_area_2d_body_entered(body: RigidBody2D):
+	body.receive_damage(10)
 	pass # Replace with function body.
 

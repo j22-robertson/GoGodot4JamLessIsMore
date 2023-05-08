@@ -69,3 +69,7 @@ func _on_child_entered_tree(node):
 	#node.setup = true
 	#node.target = target
 	pass # Replace with function body.
+	
+func _on_child_exiting_tree(node):
+	enemy_pool.push_back(node)
+	pass # Replace with function body.

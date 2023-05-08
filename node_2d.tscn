@@ -15,7 +15,7 @@ script = ExtResource("1_hwwaj")
 [node name="Enemy Pool" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_l01vq")]
 max_spawn = 1000
 target = NodePath("../Player")
-duration_between_spawns = 0.2
+duration_between_spawns = 0.05
 
 [connection signal="player_spawned" from="." to="Enemy Pool" method="_on_level_player_spawned"]
 [connection signal="ready" from="Player" to="." method="_on_player_ready"]

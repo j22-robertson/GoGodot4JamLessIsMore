@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmip0e1yxkp46"]
+[gd_scene load_steps=6 format=3 uid="uid://bmip0e1yxkp46"]
 
 [ext_resource type="Script" path="res://EnemyController.gd" id="1_qyluw"]
 [ext_resource type="SpriteFrames" uid="uid://dadcwqa6om3tw" path="res://enemy_base.tres" id="2_hyw18"]
 [ext_resource type="Script" path="res://cow.gd" id="2_y2ae4"]
+[ext_resource type="Texture2D" uid="uid://bkfx2tnykdk5r" path="res://assets/Effects/Effect 4 - Sprite Sheet.png" id="4_jjlh1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e8nvc"]
 
@@ -17,8 +18,15 @@ script = ExtResource("2_y2ae4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy_Body"]
 scale = Vector2(0.974359, 1.01963)
 sprite_frames = ExtResource("2_hyw18")
-frame_progress = 0.976289
+frame_progress = 0.299211
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Body"]
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_e8nvc")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Enemy_Body"]
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("4_jjlh1")
+gravity = Vector2(0, 0)

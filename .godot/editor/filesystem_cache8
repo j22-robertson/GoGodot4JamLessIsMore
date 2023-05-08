@@ -1,22 +1,28 @@
 2a60927148abd1d33b818b535e306557
-::res://::1683538644
-Character.gd::GDScript::-1::1683496696::0::1::::<>Node2D<>::
-cow.gd::GDScript::-1::1683492542::0::1::::<>RigidBody2D<>::
+::res://::1683565320
+Character.gd::GDScript::-1::1683564908::0::1::::<>Node2D<>::
+cow.gd::GDScript::-1::1683564992::0::1::::<>RigidBody2D<>::
 cow.tscn::PackedScene::9150152329758027460::1683485894::0::1::::<><>::uid://bmip0e1yxkp46
-Enemy Pool.gd::GDScript::-1::1683496612::0::1::::<>Node2D<>::
-Enemy.gd::GDScript::-1::1683496612::0::1::::<>Node2D<>::
-EnemyController.gd::GDScript::-1::1683496612::0::1::::<>Node2D<>::
-enemy_base.tres::SpriteFrames::7165616747594236972::1683478985::0::1::::<><>::uid://cqw3raxfxa2p1
-enemy_base.tscn::PackedScene::3246157480500999925::1683496985::0::1::::<><>::res://EnemyController.gd<>uid://dadcwqa6om3tw<>res://cow.gd
-enemy_pool.tscn::PackedScene::2393832105785179023::1683492227::0::1::::<><>::res://Enemy Pool.gd
+Enemy Pool.gd::GDScript::-1::1683564908::0::1::::<>Node2D<>::
+Enemy.gd::GDScript::-1::1683562132::0::1::::<>Node2D<>::
+EnemyController.gd::GDScript::-1::1683564908::0::1::::<>Node2D<>::
+enemy_base.tres::SpriteFrames::7165616747594236972::1683539157::0::1::::<><>::uid://cqw3raxfxa2p1
+enemy_base.tscn::PackedScene::3246157480500999925::1683564991::0::1::::<><>::res://EnemyController.gd<>uid://dadcwqa6om3tw<>res://cow.gd
+enemy_pool.tscn::PackedScene::2393832105785179023::1683564992::0::1::::<><>::res://Enemy Pool.gd
 icon.svg::CompressedTexture2D::488330070922903872::1683454550::1683454556::1::::<><>::
-Level1.gd::GDScript::-1::1683478445::0::1::::<>Node2D<>::
+Level1.gd::GDScript::-1::1683557461::0::1::::<>Node2D<>::
 node_2d.gdshader::Shader::-1::1683466714::0::1::::<><>::
-node_2d.tscn::PackedScene::4573519584176771206::1683496986::0::1::::<><>::res://Level1.gd<>uid://clft67gc8okkx<>uid://baduchgkaditr
-Player.gd::GDScript::-1::1683496985::0::1::::<>RigidBody2D<>::
-player.tscn::PackedScene::5556451208800035027::1683496986::0::1::::<><>::res://Character.gd<>res://Player.gd<>uid://bme8vctoamrqi
+node_2d.tscn::PackedScene::4573519584176771206::1683564992::0::1::::<><>::res://Level1.gd<>uid://clft67gc8okkx<>uid://c1p7epfkyhoeb<>uid://baduchgkaditr
+Player.gd::GDScript::-1::1683539157::0::1::::<>RigidBody2D<>::
+player.tscn::PackedScene::5556451208800035027::1683564992::0::1::::<><>::res://Character.gd<>res://Player.gd<>uid://bme8vctoamrqi<>res://Animator.gd<>uid://bg4g7ef57ox6w
 PlayerMovement.gd::GDScript::-1::1683496202::0::1::::<>CharacterBody2D<>::
 Player_collider.gd::GDScript::-1::1683496403::0::1::::<>Area2D<>::
+Animator.gd::GDScript::-1::1683539157::0::1::::<>AnimatedSprite2D<>::
+level.tscn::PackedScene::6630667851291079161::1683564992::0::1::::<><>::uid://o3lwmluek12j<>uid://bxcvw5mtfw6ys<>uid://cie04oxbd5888
+README.md::TextFile::-1::1683557601::0::1::::<><>::
+weapon_base.tscn::PackedScene::2867842366974410368::1683564992::0::1::::<><>::res://weapon_base.gd<>res://WeaponBehaviour.gd<>uid://dhrn6q7bvctba
+WeaponBehaviour.gd::GDScript::-1::1683541703::0::1::::<>Node2D<>::
+weapon_base.gd::GDScript::-1::1683564908::0::1::::<>Node2D<>::
 ::res://addons/::1683467395
 ::res://addons/vision_cone_2d/::1683467396
 cone_editor_helper.gd::GDScript::-1::1683467395::0::1::::<>Node2D<>::
@@ -31,7 +37,16 @@ enemy.tscn::PackedScene::3814154241619058624::1683467395::0::1::::<><>::uid://kf
 example.tscn::PackedScene::5204717988226123136::1683467395::0::1::::<><>::uid://bulute7i5ksyy<>uid://hm3o2foxwd2m<>res://addons/vision_cone_2d/examples/player_movement.gd
 player_movement.gd::GDScript::-1::1683467395::0::1::::<>CharacterBody2D<>::
 wall.tscn::PackedScene::517820941949250254::1683467396::0::1::::<><>::
-::res://assets/::1683454962
+::res://assets/::1683565334
+::res://assets/Effects/::1683565332
+Effect1 Gameboy Spritesheet.png::CompressedTexture2D::3136849933158230581::1582458876::1683565346::1::::<><>::
+Effect3 Gameboy Spritesheet.png::CompressedTexture2D::8934944515180201846::1582459548::1683565346::1::::<><>::
+Effect4 Gameboy Spritesheet.png::CompressedTexture2D::2974267933747755897::1582459577::1683565346::1::::<><>::
+Effect 1 - Sprite Sheet.png::CompressedTexture2D::2679305154728227364::1582295080::1683565346::1::::<><>::
+Effect 2 - Sprite Sheet.png::CompressedTexture2D::3719682259644413874::1582417876::1683565346::1::::<><>::
+Effect 3 - Sprite Sheet.png::CompressedTexture2D::3955551230057124431::1582422795::1683565346::1::::<><>::
+Effect 4 - Sprite Sheet.png::CompressedTexture2D::3100076735242838829::1582422816::1683565346::1::::<><>::
+Effectst2 Gameboy Spritesheet.png::CompressedTexture2D::3452777220140228314::1582458951::1683565346::1::::<><>::
 ::res://assets/Sprout Lands - Sprites - Basic pack/::1683454962
 ::res://assets/Sprout Lands - Sprites - Basic pack/Characters/::1683454971
 Basic Charakter Actions.png::CompressedTexture2D::3455233589375447406::1647039542::1683454971::1::::<><>::

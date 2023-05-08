@@ -14,3 +14,6 @@ res://weapon_base.gd
 res://weapon_base.tscn
 res://level.tscn
 res://Level1.gd
+res://enemy_pool.tscn
+res://enemy_base.gdshader
+res://EnemyParts.gd
