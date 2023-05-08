@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://clft67gc8okkx"]
+
+[ext_resource type="Script" path="res://Character.gd" id="1_8r2ir"]
+[ext_resource type="Script" path="res://Player.gd" id="1_pum21"]
+[ext_resource type="Texture2D" uid="uid://bme8vctoamrqi" path="res://assets/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="2_jtsgb"]
+[ext_resource type="Script" path="res://Animator.gd" id="4_njlqr"]
+[ext_resource type="PackedScene" uid="uid://bg4g7ef57ox6w" path="res://weapon_base.tscn" id="5_ar6qf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sejvq"]
+atlas = ExtResource("2_jtsgb")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63dm1"]
+atlas = ExtResource("2_jtsgb")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i07he"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sejvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63dm1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vi2e"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_8r2ir")
+
+[node name="Player" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+script = ExtResource("1_pum21")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_i07he")
+script = ExtResource("4_njlqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_3vi2e")
+
+[node name="Weapon" parent="Player" instance=ExtResource("5_ar6qf")]

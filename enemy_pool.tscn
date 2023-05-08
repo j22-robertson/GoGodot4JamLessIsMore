@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://baduchgkaditr"]
+
+[ext_resource type="Script" path="res://Enemy Pool.gd" id="1_t6r43"]
+
+[node name="Enemy Pool" type="Node2D"]
+script = ExtResource("1_t6r43")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

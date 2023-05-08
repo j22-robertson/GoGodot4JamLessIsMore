@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3mnw337xf5jc"]
+
+[ext_resource type="PackedScene" uid="uid://bmip0e1yxkp46" path="res://enemy_base.tscn" id="1_yrdsw"]
+
+[sub_resource type="GDScript" id="GDScript_3jxdn"]
+script/source = "extends \"res://Enemy.gd\"
+
+var charge : bool = false
+var rigid_body : RigidBody2D;
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var x = randf_range(0.0,1920.0)
+	var y= randf_range(0.0,1080)
+	position = Vector2(x,y);
+	#get_parent()
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+
+func _physics_process(delta):
+	
+	
+	if position.distance_to(target.position)>10.0 && !charge:
+		velocity = position.direction_to(target.position)*speed;
+		rigid_body.apply_force(velocity * delta);
+		#position = velocity * delta;
+	else:
+		charge = true
+		velocity = position.direction_to(target.position)* speed;
+		self.apply_force(velocity*2 * delta);
+		#position += (2*velocity) * delta;
+	pass
+"
+
+[node name="Enemy_Base" instance=ExtResource("1_yrdsw")]
+
+[node name="RigidBody2D" parent="." index="0"]
+script = SubResource("GDScript_3jxdn")
+speed = null

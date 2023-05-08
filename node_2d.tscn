@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6fpg1plamiok"]
+
+[ext_resource type="Script" path="res://Level1.gd" id="1_hwwaj"]
+[ext_resource type="PackedScene" uid="uid://clft67gc8okkx" path="res://player.tscn" id="2_lhpr1"]
+[ext_resource type="PackedScene" uid="uid://c1p7epfkyhoeb" path="res://level.tscn" id="2_ulvsq"]
+[ext_resource type="PackedScene" uid="uid://baduchgkaditr" path="res://enemy_pool.tscn" id="3_l01vq"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_hwwaj")
+
+[node name="Level" parent="." instance=ExtResource("2_ulvsq")]
+
+[node name="Player" parent="." instance=ExtResource("2_lhpr1")]
+position = Vector2(35, 79)
+
+[node name="Enemy Pool" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_l01vq")]
+max_spawn = 1000
+target = NodePath("../Player")
+duration_between_spawns = 0.2
+
+[connection signal="player_spawned" from="." to="Enemy Pool" method="_on_level_player_spawned"]
+[connection signal="ready" from="Player" to="." method="_on_player_ready"]

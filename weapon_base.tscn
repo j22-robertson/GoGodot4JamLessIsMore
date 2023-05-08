@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bg4g7ef57ox6w"]
+
+[ext_resource type="Script" path="res://weapon_base.gd" id="1_pm0mh"]
+[ext_resource type="Script" path="res://WeaponBehaviour.gd" id="2_sjdd3"]
+[ext_resource type="Texture2D" uid="uid://dhrn6q7bvctba" path="res://assets/Sprout Lands - Sprites - Basic pack/Characters/Tools.png" id="3_5sav4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g52m"]
+atlas = ExtResource("3_5sav4")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mcejt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g52m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c0pvh"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_pm0mh")
+
+[node name="WeaponBody" type="Node2D" parent="."]
+script = ExtResource("2_sjdd3")
+
+[node name="Area2D" type="Area2D" parent="WeaponBody"]
+position = Vector2(0, -35)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WeaponBody/Area2D"]
+position = Vector2(10, 5)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_mcejt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponBody/Area2D"]
+shape = SubResource("CapsuleShape2D_c0pvh")
+
+[connection signal="body_entered" from="WeaponBody/Area2D" to="." method="_on_area_2d_body_entered"]

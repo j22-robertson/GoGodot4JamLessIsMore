@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmip0e1yxkp46"]
+
+[ext_resource type="Script" path="res://EnemyController.gd" id="1_qyluw"]
+[ext_resource type="SpriteFrames" uid="uid://dadcwqa6om3tw" path="res://enemy_base.tres" id="2_hyw18"]
+[ext_resource type="Script" path="res://cow.gd" id="2_y2ae4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e8nvc"]
+
+[node name="Enemy_Base" type="Node2D" node_paths=PackedStringArray("rigid_body")]
+script = ExtResource("1_qyluw")
+rigid_body = NodePath("Enemy_Body")
+
+[node name="Enemy_Body" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+script = ExtResource("2_y2ae4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy_Body"]
+scale = Vector2(0.974359, 1.01963)
+sprite_frames = ExtResource("2_hyw18")
+frame_progress = 0.919062
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Body"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_e8nvc")
