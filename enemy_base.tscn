@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmip0e1yxkp46"]
+[gd_scene load_steps=10 format=3 uid="uid://bmip0e1yxkp46"]
 
 [ext_resource type="Script" path="res://EnemyController.gd" id="1_qyluw"]
 [ext_resource type="SpriteFrames" uid="uid://dadcwqa6om3tw" path="res://enemy_base.tres" id="2_hyw18"]
 [ext_resource type="Script" path="res://cow.gd" id="2_y2ae4"]
 [ext_resource type="Texture2D" uid="uid://bef408x3bgx7i" path="res://assets/Effects/Effect 1 - Sprite Sheet.png" id="4_n4rop"]
+[ext_resource type="Material" uid="uid://dveonhsnqsbyj" path="res://gpuparts.tres" id="4_uula7"]
+[ext_resource type="Script" path="res://ParticleTrail.gd" id="5_kuhep"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s8h7a"]
 friction = 0.0
@@ -16,15 +18,6 @@ particles_animation = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 4
 particles_anim_loop = false
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0au8t"]
-particle_flag_disable_z = true
-spread = 0.0
-gravity = Vector3(0, 0, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-anim_speed_min = 0.93
-anim_speed_max = 0.93
 
 [node name="Enemy_Base" type="Node2D" node_paths=PackedStringArray("rigid_body")]
 script = ExtResource("1_qyluw")
@@ -49,11 +42,7 @@ shape = SubResource("CircleShape2D_e8nvc")
 material = SubResource("CanvasItemMaterial_xdw0x")
 emitting = false
 amount = 1
-process_material = SubResource("ParticleProcessMaterial_0au8t")
+process_material = ExtResource("4_uula7")
 texture = ExtResource("4_n4rop")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Enemy_Body"]
-emitting = false
-amount = 1
-one_shot = true
-gravity = Vector2(0, 0)
+lifetime = 0.15
+script = ExtResource("5_kuhep")

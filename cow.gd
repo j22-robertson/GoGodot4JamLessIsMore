@@ -39,6 +39,10 @@ func _integrate_forces(state):
 	#else:
 		#state.get_contact_collider()
 	var tv = abs(linear_velocity.x) + abs(linear_velocity.y)
+	if bonked:
+		$GPUParticles2D.emit_particle(transform, linear_velocity.normalized(),Color(),Color(),GPUParticles2D.EMIT_FLAG_POSITION|GPUParticles2D.EMIT_FLAG_VELOCITY)
+	
+	
 	if tv < 100:
 		linear_velocity = Vector2.ZERO
 		bonked = false;
@@ -46,7 +50,6 @@ func _integrate_forces(state):
 
 func _physics_process(delta):
 	if !bonked:
-		
 		$GPUParticles2D.emitting = false;
 		var collision_info = move_and_collide(position.direction_to(target.get_player_position()).normalized() *speed * delta);
 		if collision_info && bonked:
