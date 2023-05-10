@@ -1,12 +1,14 @@
+CharacterBody2D
+Label
+CollisionShape2D
+StaticBody2D
+Area2D
 CPUParticles2D
 GPUParticles2D
 TileMap
 AnimatedSprite2D
-CollisionShape2D
-Area2D
 CanvasGroup
 Node2D
 RigidBody2D
-CharacterBody2D
 Node
 Polygon2D
