@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://clft67gc8okkx"]
+[gd_scene load_steps=11 format=3 uid="uid://clft67gc8okkx"]
 
 [ext_resource type="Script" path="res://Character.gd" id="1_8r2ir"]
 [ext_resource type="Script" path="res://Player.gd" id="1_pum21"]
@@ -30,11 +30,15 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vi2e"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_gs5el"]
+font_size = 32
+outline_color = Color(0.778018, 7.53968e-05, 0.106823, 1)
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_8r2ir")
 
-[node name="PlayerBody" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
+[node name="PlayerBody" type="CharacterBody2D" parent="."]
+motion_mode = 1
 script = ExtResource("1_pum21")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerBody"]
@@ -45,3 +49,10 @@ script = ExtResource("4_njlqr")
 shape = SubResource("CircleShape2D_3vi2e")
 
 [node name="Weapon" parent="PlayerBody" instance=ExtResource("5_ar6qf")]
+
+[node name="Counter" type="Label" parent="PlayerBody"]
+offset_left = 42.0
+offset_top = 20.0
+offset_right = 224.0
+offset_bottom = 65.0
+label_settings = SubResource("LabelSettings_gs5el")

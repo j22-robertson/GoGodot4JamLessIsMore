@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmip0e1yxkp46"]
+[gd_scene load_steps=7 format=3 uid="uid://bmip0e1yxkp46"]
 
 [ext_resource type="Script" path="res://EnemyController.gd" id="1_qyluw"]
 [ext_resource type="SpriteFrames" uid="uid://dadcwqa6om3tw" path="res://enemy_base.tres" id="2_hyw18"]
 [ext_resource type="Script" path="res://cow.gd" id="2_y2ae4"]
 [ext_resource type="Texture2D" uid="uid://bkfx2tnykdk5r" path="res://assets/Effects/Effect 4 - Sprite Sheet.png" id="4_jjlh1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s8h7a"]
+friction = 0.0
+bounce = 0.6
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e8nvc"]
 
@@ -12,6 +16,8 @@ script = ExtResource("1_qyluw")
 rigid_body = NodePath("Enemy_Body")
 
 [node name="Enemy_Body" type="RigidBody2D" parent="."]
+collision_layer = 3
+physics_material_override = SubResource("PhysicsMaterial_s8h7a")
 gravity_scale = 0.0
 script = ExtResource("2_y2ae4")
 

@@ -25,7 +25,14 @@ func _process(delta):
 	pass
 
 
+
 func _on_area_2d_body_entered(body: RigidBody2D):
+	var force = position.direction_to(body.position).normalized() * 1000
+	body.bonked = true
+	body.apply_central_impulse(force)
+	#if body is RigidBody2D:
+		#var contact_point = body.get_colliding_bodies()
+	
 	body.receive_damage(10)
 	pass # Replace with function body.
 

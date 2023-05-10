@@ -3,8 +3,9 @@ var charge : bool = false
 var setup: bool = false;
 var target: Node2D;
 var velocity : Vector2;
-
+var bonked = false;
 @export var speed :float = 100.0;
+;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -28,15 +29,27 @@ func receive_damage(damage : int):
 	$CPUParticles2D.emitting = true;
 	get_parent().deal_damage(damage)
 	pass
+func _integrate_forces(state):
+	#if !bonked:
+		#if posaition.distance_to(target.get_player_position())>10.0:
+			##linear_velocity= position.direction_to(target.get_player_position()).normalized() *speed;
+			
+		#else:
+			##linear_velocity=  position.direction_to(target.get_player_position()).normalized() * speed *2;
+	#else:
+		#state.get_contact_collider()
+	var tv = abs(linear_velocity.x) + abs(linear_velocity.y)
+	if tv < 400:
+		bonked = false;
+	pass
 
 func _physics_process(delta):
-	if position.distance_to(target.get_player_position())>10.0 && !charge:
-		velocity = position.direction_to(target.get_player_position())*speed;
-		move_and_collide(velocity * delta)
-	else:
-		charge = true
-		velocity = position.direction_to(target.get_player_position())* speed;
-		move_and_collide(velocity* 2 * delta)
-	
+	if !bonked:
+		var collision_info = move_and_collide(position.direction_to(target.get_player_position()).normalized() *speed * delta);
+		if collision_info:
+			var rbody = collision_info.get_collider()
+			rbody.set("bonked", true)
+		# = true
+			velocity = velocity.bounce(collision_info.get_normal())
 	pass
 
