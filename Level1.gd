@@ -5,6 +5,7 @@ var time = 0.0;
 var seconds : float= 0.0;
 var minutes = 0;
 var ms = 0.0;
+var player_score : int = 0;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -34,4 +35,16 @@ func _input(event):
 	pass
 func _on_player_ready():
 	player_spawned.emit(get_node("Player"))
+	pass # Replace with function body.
+
+
+func _on_enemy_pool_enemy_slain(score):
+	player_score += score;
+	$Score.text = str(player_score)
+	pass # Replace with function body.
+
+
+func _on_enemy_pool_2_enemy_slain(score):
+	player_score += score;
+	$Score.text += player_score;
 	pass # Replace with function body.

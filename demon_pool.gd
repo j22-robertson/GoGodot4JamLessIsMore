@@ -1,14 +1,8 @@
-extends Node2D
-var enemy_scene : = preload("res://enemy_base.tscn");
-signal enemy_slain(score: int)
-var enemy_pool : Array;
-@export var max_spawn : int = 1000;
-@export_range(0,100) var start_spawn : int;
-@export var target : Node2D;
-@export var duration_between_spawns = 5.0;
-@export var score_value: int = 10;
-var current_held :int= 0;
-var timer = 0.0;
+extends "res://Enemy Pool.gd";
+var demon_scene = preload("res://enemy_demon.tscn")
+
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,7 +17,7 @@ func spawn_enemy():
 	pass
 
 func load_enemy():
-	var obj  := enemy_scene.instantiate()
+	var obj  := demon_scene.instantiate()
 	obj.set("target",target)
 	add_child(obj)
 	current_held+=1
@@ -66,5 +60,4 @@ func _on_child_entered_tree(node):
 func _on_child_exiting_tree(node):
 	node.disable()
 	enemy_pool.push_back(node)
-	enemy_slain.emit(score_value);
 	pass # Replace with function body.

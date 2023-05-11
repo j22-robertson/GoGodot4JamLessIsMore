@@ -7,6 +7,7 @@ var setup : bool = false;
 var charge: bool = false;
 @export var max_health : int = 20;
 var health : int = 20;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rigid_body.target = target;
@@ -22,14 +23,11 @@ func enable():
 	health = max_health
 	visible = true
 	pass
-
 func deal_damage(damage : int, force: Vector2):
 	health -= damage;
-	
 	if health <= 0:
 		$Enemy_Body/GPUParticles2D2.emit_particle($Enemy_Body.transform, Vector2.ZERO,Color() ,Color() , GPUParticles2D.EMIT_FLAG_POSITION|GPUParticles2D.EMIT_FLAG_VELOCITY)
 		$Enemy_Body.linear_velocity = Vector2.ZERO
-		
 		get_parent().remove_child(self)
 	else:
 		rigid_body.apply_central_impulse(force)

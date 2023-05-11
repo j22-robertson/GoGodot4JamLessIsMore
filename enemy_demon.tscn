@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhvxqtvorjx16"]
+
+[ext_resource type="PackedScene" uid="uid://bmip0e1yxkp46" path="res://enemy_base.tscn" id="1_ncq7k"]
+[ext_resource type="Script" path="res://demon.gd" id="2_k47k0"]
+[ext_resource type="Texture2D" uid="uid://ber8wfgk6juok" path="res://assets/Sprout Lands - Sprites - Basic pack/Characters/DemonCow.png" id="3_nyux8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec7wq"]
+atlas = ExtResource("3_nyux8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks3am"]
+atlas = ExtResource("3_nyux8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb2co"]
+atlas = ExtResource("3_nyux8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b8ko5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec7wq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks3am")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb2co")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Enemy_Base" instance=ExtResource("1_ncq7k")]
+
+[node name="Enemy_Body" parent="." index="0"]
+script = ExtResource("2_k47k0")
+
+[node name="AnimatedSprite2D" parent="Enemy_Body" index="0"]
+sprite_frames = SubResource("SpriteFrames_b8ko5")
+frame_progress = 0.528154

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c041apqla640g"]
+
+[ext_resource type="PackedScene" uid="uid://baduchgkaditr" path="res://enemy_pool.tscn" id="1_32oko"]
+[ext_resource type="Script" path="res://demon_pool.gd" id="2_yv64y"]
+
+[node name="Enemy Pool" instance=ExtResource("1_32oko")]
+script = ExtResource("2_yv64y")

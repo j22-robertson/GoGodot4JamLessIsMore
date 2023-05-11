@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6fpg1plamiok"]
+[gd_scene load_steps=8 format=3 uid="uid://b6fpg1plamiok"]
 
 [ext_resource type="Script" path="res://Level1.gd" id="1_hwwaj"]
 [ext_resource type="PackedScene" uid="uid://clft67gc8okkx" path="res://player.tscn" id="2_lhpr1"]
 [ext_resource type="PackedScene" uid="uid://c1p7epfkyhoeb" path="res://level.tscn" id="2_ulvsq"]
 [ext_resource type="PackedScene" uid="uid://baduchgkaditr" path="res://enemy_pool.tscn" id="3_l01vq"]
 [ext_resource type="AudioStream" uid="uid://qxcrbffwnjeu" path="res://assets/Audio/P to Q.wav" id="5_p8rpm"]
+[ext_resource type="PackedScene" uid="uid://c041apqla640g" path="res://demon_pool.tscn" id="6_xm6a7"]
 
 [sub_resource type="Theme" id="Theme_grds4"]
 
@@ -33,8 +34,21 @@ theme = SubResource("Theme_grds4")
 bbcode_enabled = true
 custom_effects = [null]
 
+[node name="Enemy Pool2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_xm6a7")]
+max_spawn = 300
+target = NodePath("../Player")
+duration_between_spawns = 0.2
+
 [node name="PopupMenu" type="PopupMenu" parent="."]
 initial_position = 2
 
+[node name="Score" type="RichTextLabel" parent="."]
+offset_left = 65.0
+offset_top = 68.0
+offset_right = 202.0
+offset_bottom = 108.0
+
 [connection signal="player_spawned" from="." to="Enemy Pool" method="_on_level_player_spawned"]
 [connection signal="ready" from="Player" to="." method="_on_player_ready"]
+[connection signal="enemy_slain" from="Enemy Pool" to="." method="_on_enemy_pool_enemy_slain"]
+[connection signal="enemy_slain" from="Enemy Pool2" to="." method="_on_enemy_pool_2_enemy_slain"]
