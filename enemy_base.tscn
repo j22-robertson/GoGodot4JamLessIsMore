@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmip0e1yxkp46"]
+[gd_scene load_steps=15 format=3 uid="uid://bmip0e1yxkp46"]
 
 [ext_resource type="Script" path="res://EnemyController.gd" id="1_qyluw"]
 [ext_resource type="SpriteFrames" uid="uid://dadcwqa6om3tw" path="res://enemy_base.tres" id="2_hyw18"]
 [ext_resource type="Script" path="res://cow.gd" id="2_y2ae4"]
 [ext_resource type="Texture2D" uid="uid://bef408x3bgx7i" path="res://assets/Effects/Effect 1 - Sprite Sheet.png" id="4_n4rop"]
 [ext_resource type="Material" uid="uid://dveonhsnqsbyj" path="res://gpuparts.tres" id="4_uula7"]
-[ext_resource type="Script" path="res://ParticleTrail.gd" id="5_kuhep"]
+[ext_resource type="Texture2D" uid="uid://cqw3raxfxa2p1" path="res://assets/Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="6_mx61c"]
+[ext_resource type="AudioStream" uid="uid://bvjw0x21lcv7i" path="res://assets/Audio/bonksounds.tres" id="7_lbj5f"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s8h7a"]
 friction = 0.0
@@ -18,6 +19,29 @@ particles_animation = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 4
 particles_anim_loop = false
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lp6o4"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_ufice"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5pe6b"]
+gradient = SubResource("Gradient_ufice")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xtmud"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 2.0
+color = Color(1, 1, 1, 0.141176)
+color_ramp = SubResource("GradientTexture1D_5pe6b")
+anim_speed_min = 0.46
+anim_speed_max = 0.46
 
 [node name="Enemy_Base" type="Node2D" node_paths=PackedStringArray("rigid_body")]
 script = ExtResource("1_qyluw")
@@ -45,4 +69,15 @@ amount = 1
 process_material = ExtResource("4_uula7")
 texture = ExtResource("4_n4rop")
 lifetime = 0.15
-script = ExtResource("5_kuhep")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Enemy_Body"]
+material = SubResource("CanvasItemMaterial_lp6o4")
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_xtmud")
+texture = ExtResource("6_mx61c")
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Enemy_Body"]
+stream = ExtResource("7_lbj5f")
+volume_db = -5.0

@@ -29,8 +29,12 @@ func deal_damage(damage : int):
 	health -= damage;
 	
 	if health < 0:
+		$Enemy_Body/GPUParticles2D2.emit_particle($Enemy_Body.transformd, Vector2.ZERO,Color() ,Color() , GPUParticles2D.EMIT_FLAG_POSITION|GPUParticles2D.EMIT_FLAG_VELOCITY)
 		get_parent().remove_child(self)
 		$Enemy_Body.linear_velocity = Vector2.ZERO
+	else:
+		$Enemy_Body/AudioStreamPlayer2D.pitch_scale = randf_range(1.0,1.5)
+		$Enemy_Body/AudioStreamPlayer2D.play()
 	
 	pass
 

@@ -3,6 +3,7 @@ extends Node2D
 @onready var WeaponBody = $WeaponBody
 
 @export_range(0.0,60.0) var cooldown: float = 1.0
+@export_range(0.0,1000000.0) var bonk_force = 1000.0;
 var timer: = 0.0
 
 func _attack(direction: Vector2):
@@ -27,7 +28,8 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body: RigidBody2D):
-	var force = position.direction_to(body.position).normalized() * 1000
+	var force = position.direction_to(body.position).normalized() * bonk_force
+	#$AudioStreamPlayer.play(body.position.angle())
 	body.bonked = true
 	body.apply_central_impulse(force)
 	#if body is RigidBody2D:

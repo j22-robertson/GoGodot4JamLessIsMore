@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6fpg1plamiok"]
+[gd_scene load_steps=6 format=3 uid="uid://b6fpg1plamiok"]
 
 [ext_resource type="Script" path="res://Level1.gd" id="1_hwwaj"]
 [ext_resource type="PackedScene" uid="uid://clft67gc8okkx" path="res://player.tscn" id="2_lhpr1"]
 [ext_resource type="PackedScene" uid="uid://c1p7epfkyhoeb" path="res://level.tscn" id="2_ulvsq"]
 [ext_resource type="PackedScene" uid="uid://baduchgkaditr" path="res://enemy_pool.tscn" id="3_l01vq"]
+[ext_resource type="AudioStream" uid="uid://qxcrbffwnjeu" path="res://assets/Audio/P to Q.wav" id="5_p8rpm"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_hwwaj")
@@ -15,6 +16,11 @@ script = ExtResource("1_hwwaj")
 [node name="Enemy Pool" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_l01vq")]
 target = NodePath("../Player")
 duration_between_spawns = 0.05
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_p8rpm")
+volume_db = -31.08
+autoplay = true
 
 [connection signal="player_spawned" from="." to="Enemy Pool" method="_on_level_player_spawned"]
 [connection signal="ready" from="Player" to="." method="_on_player_ready"]

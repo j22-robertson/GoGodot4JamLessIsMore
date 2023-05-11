@@ -26,7 +26,7 @@ func respawn():
 	pass
 
 func receive_damage(damage : int):
-	$GPUParticles2D.emitting = true;
+	#$GPUParticles2D.emitting = true;
 	get_parent().deal_damage(damage)
 	pass
 func _integrate_forces(state):
