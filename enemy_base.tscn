@@ -33,6 +33,7 @@ gradient = SubResource("Gradient_ufice")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xtmud"]
 particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
@@ -40,12 +41,11 @@ scale_min = 2.0
 scale_max = 2.0
 color = Color(1, 1, 1, 0.141176)
 color_ramp = SubResource("GradientTexture1D_5pe6b")
-anim_speed_min = 0.46
-anim_speed_max = 0.46
+anim_speed_min = 0.98
+anim_speed_max = 1.05
 
-[node name="Enemy_Base" type="Node2D" node_paths=PackedStringArray("rigid_body")]
+[node name="Enemy_Base" type="Node2D"]
 script = ExtResource("1_qyluw")
-rigid_body = NodePath("Enemy_Body")
 
 [node name="Enemy_Body" type="RigidBody2D" parent="."]
 collision_layer = 3
@@ -54,9 +54,7 @@ gravity_scale = 0.0
 script = ExtResource("2_y2ae4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy_Body"]
-scale = Vector2(0.974359, 1.01963)
 sprite_frames = ExtResource("2_hyw18")
-frame_progress = 0.299211
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Body"]
 scale = Vector2(1.5, 1.5)
@@ -65,10 +63,11 @@ shape = SubResource("CircleShape2D_e8nvc")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Enemy_Body"]
 material = SubResource("CanvasItemMaterial_xdw0x")
 emitting = false
-amount = 1
+amount = 3
 process_material = ExtResource("4_uula7")
 texture = ExtResource("4_n4rop")
-lifetime = 0.15
+lifetime = 0.2
+fixed_fps = 24
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="Enemy_Body"]
 material = SubResource("CanvasItemMaterial_lp6o4")
@@ -76,6 +75,7 @@ emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_xtmud")
 texture = ExtResource("6_mx61c")
+lifetime = 0.2
 one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Enemy_Body"]

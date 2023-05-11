@@ -31,10 +31,10 @@ func _on_area_2d_body_entered(body: RigidBody2D):
 	var force = position.direction_to(body.position).normalized() * bonk_force
 	#$AudioStreamPlayer.play(body.position.angle())
 	body.bonked = true
-	body.apply_central_impulse(force)
+	#body.apply_central_impulse(force)
 	#if body is RigidBody2D:
 		#var contact_point = body.get_colliding_bodies()
 	
-	body.receive_damage(10)
+	body.receive_damage(10, force)
 	pass # Replace with function body.
 

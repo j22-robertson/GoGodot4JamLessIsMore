@@ -24,7 +24,7 @@ func spawn_enemy():
 
 func load_enemy():
 	var obj  := enemy_scene.instantiate()
-	obj.target = target;
+	obj.set("target",target)
 	add_child(obj)
 	current_held+=1
 	pass

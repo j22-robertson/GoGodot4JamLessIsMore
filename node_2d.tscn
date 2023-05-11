@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6fpg1plamiok"]
+[gd_scene load_steps=7 format=3 uid="uid://b6fpg1plamiok"]
 
 [ext_resource type="Script" path="res://Level1.gd" id="1_hwwaj"]
 [ext_resource type="PackedScene" uid="uid://clft67gc8okkx" path="res://player.tscn" id="2_lhpr1"]
 [ext_resource type="PackedScene" uid="uid://c1p7epfkyhoeb" path="res://level.tscn" id="2_ulvsq"]
 [ext_resource type="PackedScene" uid="uid://baduchgkaditr" path="res://enemy_pool.tscn" id="3_l01vq"]
 [ext_resource type="AudioStream" uid="uid://qxcrbffwnjeu" path="res://assets/Audio/P to Q.wav" id="5_p8rpm"]
+
+[sub_resource type="Theme" id="Theme_grds4"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_hwwaj")
@@ -21,6 +23,18 @@ duration_between_spawns = 0.05
 stream = ExtResource("5_p8rpm")
 volume_db = -31.08
 autoplay = true
+
+[node name="Game timer" type="RichTextLabel" parent="."]
+offset_left = 467.0
+offset_top = 2.0
+offset_right = 724.0
+offset_bottom = 42.0
+theme = SubResource("Theme_grds4")
+bbcode_enabled = true
+custom_effects = [null]
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+initial_position = 2
 
 [connection signal="player_spawned" from="." to="Enemy Pool" method="_on_level_player_spawned"]
 [connection signal="ready" from="Player" to="." method="_on_player_ready"]

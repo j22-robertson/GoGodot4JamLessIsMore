@@ -25,9 +25,9 @@ func respawn():
 	position = new_position
 	pass
 
-func receive_damage(damage : int):
+func receive_damage(damage : int, force: Vector2):
 	#$GPUParticles2D.emitting = true;
-	get_parent().deal_damage(damage)
+	get_parent().deal_damage(damage, force)
 	pass
 func _integrate_forces(state):
 	#if !bonked:
@@ -40,6 +40,7 @@ func _integrate_forces(state):
 		#state.get_contact_collider()
 	var tv = abs(linear_velocity.x) + abs(linear_velocity.y)
 	if bonked:
+		rotation_degrees = -90 + rad_to_deg(linear_velocity.angle())
 		$GPUParticles2D.emit_particle(transform, linear_velocity.normalized(),Color(),Color(),GPUParticles2D.EMIT_FLAG_POSITION|GPUParticles2D.EMIT_FLAG_VELOCITY)
 	
 	
@@ -49,9 +50,13 @@ func _integrate_forces(state):
 	pass
 
 func _physics_process(delta):
+	
+	#rotation_degrees=  get_angle_to(target.get_player_position())
+	#look_at(target.position)
 	if !bonked:
 		$GPUParticles2D.emitting = false;
 		var collision_info = move_and_collide(position.direction_to(target.get_player_position()).normalized() *speed * delta);
+		rotation_degrees =   rad_to_deg(position.direction_to(target.get_player_position()).angle())
 		if collision_info && bonked:
 			var rbody = collision_info.get_collider()
 			rbody.set("bonked", true)
