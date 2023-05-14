@@ -22,6 +22,7 @@ func get_input():
 	var input_direction = Input.get_vector("Left","Right","Up","Down")
 	velocity = input_direction * speed
 	pass
+	
 func _process(delta):
 	$Counter.text = "Counter current:" + str(counter)
 	var abs_rot = rotation_degrees + 180
@@ -30,8 +31,6 @@ func _process(delta):
 		pass
 	
 	var rotation_diff = abs_rot - previous_rotation;
-#print_debug("rot_diff: " + str(rotation_diff) + "\n")
-	#print_debug("Rotation:" + str(abs_rot) +"\n" + "PrevRotation:" + str(previous_rotation) + "\n" )
 	previous_rotation = abs_rot
 	if rotation_diff == 0:
 		pass

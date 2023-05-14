@@ -31,10 +31,10 @@ func _physics_process(delta):
 		$GPUParticles2D.emitting = false;
 		if position.distance_to(target.get_player_position()) > 500:
 			collision_info = move_and_collide(position.direction_to(target.get_player_position()).normalized() *speed * delta);
-			print_debug("Shooting fireball");
+			##print_debug("Shooting fireball");
 		else:
 			collision_info = move_and_collide(position.direction_to(-target.get_player_position()).normalized() *speed * delta);
-			print_debug("Running away");
+			#print_debug("Running away");
 		rotation_degrees =   rad_to_deg(position.direction_to(target.get_player_position()).angle())
 		if collision_info && bonked:
 			var rbody = collision_info.get_collider()

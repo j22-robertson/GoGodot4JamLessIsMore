@@ -5,3 +5,4 @@
 
 [node name="Enemy Pool" instance=ExtResource("1_32oko")]
 script = ExtResource("2_yv64y")
+max_spawn = 50

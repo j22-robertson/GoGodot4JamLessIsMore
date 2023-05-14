@@ -35,7 +35,6 @@ bbcode_enabled = true
 custom_effects = [null]
 
 [node name="Enemy Pool2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_xm6a7")]
-max_spawn = 300
 target = NodePath("../Player")
 duration_between_spawns = 0.2
 
