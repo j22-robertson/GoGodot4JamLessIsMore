@@ -47,7 +47,7 @@ anim_speed_max = 0.46
 script = ExtResource("1_qyluw")
 
 [node name="Enemy_Body" type="RigidBody2D" parent="."]
-collision_layer = 3
+collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_s8h7a")
 gravity_scale = 0.0
 script = ExtResource("2_y2ae4")

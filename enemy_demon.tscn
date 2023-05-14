@@ -36,7 +36,10 @@ animations = [{
 [node name="Enemy_Base" instance=ExtResource("1_ncq7k")]
 
 [node name="Enemy_Body" parent="." index="0"]
+collision_layer = 4
+collision_mask = 6
 script = ExtResource("2_k47k0")
+cooldown = 2.0
 
 [node name="AnimatedSprite2D" parent="Enemy_Body" index="0"]
 sprite_frames = SubResource("SpriteFrames_b8ko5")

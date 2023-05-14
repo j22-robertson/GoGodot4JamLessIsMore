@@ -1,5 +1,7 @@
 extends Node2D
 
+
+
 @onready var rigid_body : RigidBody2D = $Enemy_Body;
 var target : Node2D;
 var pool;
@@ -7,14 +9,18 @@ var setup : bool = false;
 var charge: bool = false;
 @export var max_health : int = 20;
 var health : int = 20;
+var timer = 0.0;
+;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rigid_body.target = target;
 	health = max_health
+	
+	#get_tree().spawn_projectile()
 	#disable()
 	pass # Replace with function body.
-	
+
 func enable():
 	$Enemy_Body.set_physics_process(true)
 	$Enemy_Body/CollisionShape2D.set_deferred("disabled", false);

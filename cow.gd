@@ -34,7 +34,6 @@ func _integrate_forces(state):
 	if bonked:
 		rotation_degrees = -90 + rad_to_deg(linear_velocity.angle())
 		$GPUParticles2D.emit_particle(transform, linear_velocity.normalized(),Color(),Color(),GPUParticles2D.EMIT_FLAG_POSITION|GPUParticles2D.EMIT_FLAG_VELOCITY)
-		
 	if tv < 100:
 		linear_velocity = Vector2.ZERO
 		bonked = false;
@@ -51,7 +50,6 @@ func _physics_process(delta):
 		if collision_info && bonked:
 			var rbody = collision_info.get_collider()
 			rbody.set("bonked", true)
-		# = true
 			velocity = velocity.bounce(collision_info.get_normal())
 	pass
 

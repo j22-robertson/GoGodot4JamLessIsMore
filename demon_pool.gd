@@ -19,6 +19,7 @@ func spawn_enemy():
 func load_enemy():
 	var obj  := demon_scene.instantiate()
 	obj.set("target",target)
+	obj.get_node("Enemy_Body").connect("shoot", get_parent()._spawn_projectile);
 	add_child(obj)
 	current_held+=1
 	pass

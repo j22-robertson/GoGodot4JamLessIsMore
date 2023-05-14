@@ -12,7 +12,7 @@ var timer = 0.0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#init_pool();
+
 	pass # Replace with function body.
 	
 func spawn_enemy():

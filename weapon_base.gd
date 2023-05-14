@@ -1,9 +1,11 @@
 extends Node2D
 
+signal has_bonked();
 @onready var WeaponBody = $WeaponBody
 
 @export_range(0.0,60.0) var cooldown: float = 1.0
-@export_range(0.0,1000000.0) var bonk_force = 1000.0;
+@export_range(0.0,1000000.0) var bonk_force = 600.0;
+
 var timer: = 0.0
 
 func _attack(direction: Vector2):
@@ -28,13 +30,16 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body: RigidBody2D):
-	var force = position.direction_to(body.position).normalized() * bonk_force
-	#$AudioStreamPlayer.play(body.position.angle())
-	body.bonked = true
-	#body.apply_central_impulse(force)
-	#if body is RigidBody2D:
-		#var contact_point = body.get_colliding_bodies()
-	
-	body.receive_damage(10, force)
-	pass # Replace with function body.
+	has_bonked.emit()
+	if(!body.bonked):
+		var force = position.direction_to(body.position).normalized() * bonk_force
+		body.bonked = true
+		body.receive_damage(10, force)
+		
+	else :
+			var force = position.direction_to(body.position).normalized() * bonk_force
+			body.bonked = true
+			body.receive_damage(0, force)
+	pass 
+	# Replace with function body.
 

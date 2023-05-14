@@ -38,6 +38,8 @@ outline_color = Color(0.778018, 7.53968e-05, 0.106823, 1)
 script = ExtResource("1_8r2ir")
 
 [node name="PlayerBody" type="CharacterBody2D" parent="."]
+position = Vector2(715, 352)
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_pum21")
 
@@ -57,3 +59,5 @@ offset_top = 20.0
 offset_right = 224.0
 offset_bottom = 65.0
 label_settings = SubResource("LabelSettings_gs5el")
+
+[connection signal="has_bonked" from="PlayerBody/Weapon" to="PlayerBody" method="_on_weapon_has_bonked"]
