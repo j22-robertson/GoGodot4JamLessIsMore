@@ -4,7 +4,6 @@
 
 [node name="Enemy Pool" type="Node2D"]
 script = ExtResource("1_t6r43")
-max_spawn = 400
 start_spawn = 40
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

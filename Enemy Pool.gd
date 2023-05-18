@@ -8,7 +8,6 @@ var enemy_pool : Array;
 @export var duration_between_spawns = 5.0;
 @export var score_value: int = 10;
 var current_held :int= 0;
-var current_spawned: int = 0;
 var timer = 0.0;
 
 # Called when the node enters the scene tree for the first time.
@@ -48,10 +47,7 @@ func _process(delta):
 		try_spawn()
 	pass
 
-func _input(event):
-	if event.is_action("Display Debug"):
-		print_debug("demon_pool count:" + str(current_held))
-	pass
+
 func _on_refund(obj):
 	obj.disable()
 	enemy_pool.push_back(obj)
@@ -64,12 +60,10 @@ func _on_level_player_spawned(player):
 
 
 func _on_child_entered_tree(node):
-	current_spawned+=1;
 	node.enable();
 	pass # Replace with function body.
 	
 func _on_child_exiting_tree(node):
-	current_spawned+=1
 	node.disable()
 	enemy_pool.push_back(node)
 	enemy_slain.emit(score_value);

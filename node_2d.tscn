@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6fpg1plamiok"]
+[gd_scene load_steps=9 format=3 uid="uid://b6fpg1plamiok"]
 
 [ext_resource type="Script" path="res://Level1.gd" id="1_hwwaj"]
 [ext_resource type="PackedScene" uid="uid://clft67gc8okkx" path="res://player.tscn" id="2_lhpr1"]
@@ -6,10 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://baduchgkaditr" path="res://enemy_pool.tscn" id="3_l01vq"]
 [ext_resource type="AudioStream" uid="uid://qxcrbffwnjeu" path="res://assets/Audio/P to Q.wav" id="5_p8rpm"]
 [ext_resource type="PackedScene" uid="uid://c041apqla640g" path="res://demon_pool.tscn" id="6_xm6a7"]
+[ext_resource type="PackedScene" uid="uid://1xdownwfbkcl" path="res://fireball_pool.tscn" id="7_tan5s"]
 
 [sub_resource type="Theme" id="Theme_grds4"]
 
-[node name="Level" type="Node2D"]
+[node name="Game" type="Node2D"]
 script = ExtResource("1_hwwaj")
 
 [node name="Level" parent="." instance=ExtResource("2_ulvsq")]
@@ -17,6 +18,8 @@ script = ExtResource("1_hwwaj")
 [node name="Player" parent="." instance=ExtResource("2_lhpr1")]
 
 [node name="Enemy Pool" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_l01vq")]
+max_spawn = 40
+start_spawn = 0
 target = NodePath("../Player")
 duration_between_spawns = 0.05
 
@@ -35,6 +38,8 @@ bbcode_enabled = true
 custom_effects = [null]
 
 [node name="Enemy Pool2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_xm6a7")]
+max_spawn = 3
+start_spawn = 0
 target = NodePath("../Player")
 duration_between_spawns = 0.2
 
@@ -47,7 +52,11 @@ offset_top = 68.0
 offset_right = 202.0
 offset_bottom = 108.0
 
+[node name="FireballPool" parent="." instance=ExtResource("7_tan5s")]
+
 [connection signal="player_spawned" from="." to="Enemy Pool" method="_on_level_player_spawned"]
+[connection signal="player_death" from="Player" to="." method="_on_player_player_death"]
 [connection signal="ready" from="Player" to="." method="_on_player_ready"]
 [connection signal="enemy_slain" from="Enemy Pool" to="." method="_on_enemy_pool_enemy_slain"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 [connection signal="enemy_slain" from="Enemy Pool2" to="." method="_on_enemy_pool_2_enemy_slain"]
