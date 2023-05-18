@@ -2,6 +2,11 @@ extends "res://Enemy Pool.gd";
 var demon_scene = preload("res://enemy_demon.tscn")
 
 
+## READ LATER
+# Find enemy with smallest distance optimization
+# only search within range e.g screenspace
+
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -42,7 +47,10 @@ func _process(delta):
 		try_spawn()
 	pass
 
-
+func _input(event):
+	if event.is_action("Display Debug"):
+		print_debug("demon_pool count:" + str(current_held))
+	pass
 func _on_refund(obj):
 	obj.disable()
 	enemy_pool.push_back(obj)

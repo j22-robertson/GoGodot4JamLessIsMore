@@ -8,55 +8,57 @@ var start_rotation;
 var start_direction : bool;
 var counter : int = 0
 var circling : bool = false
-var prev_mouse_position;
-@export var spin_force_modifier = 0.1;
-@export var spin_force = 0.0
-@export var momentum = 0.0;
-@export var spin_loss_rate = 10;
-@export var maximum_spin_force = 1000.0;
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_rotation =rotation_degrees;
-	prev_mouse_position = get_global_mouse_position()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input(event):
-	
 	pass
-
 func get_input():
-	var new_pos : Vector2 = get_global_mouse_position();
-	spin_force += new_pos.distance_to(prev_mouse_position)
-	prev_mouse_position = new_pos
-
-	
-	#look_at(get_global_mouse_position())
+	look_at(get_global_mouse_position())
 	var input_direction = Input.get_vector("Left","Right","Up","Down")
 	velocity = input_direction * speed
 	pass
-
-func _physics_process(delta):
-	get_input()
 	
-	if(spin_force > maximum_spin_force):
-		spin_force = maximum_spin_force
-	elif(spin_force < 0.0):
-		spin_force = 0.0
-	rotation += spin_force * spin_force_modifier * delta;
-	spin_force -= spin_loss_rate; 
-	#var player_rotation = rotation_degrees
-	#var rotation_difference = player_rotation;
-	move_and_slide()
-	#move_and_slide();
-	pass
-func take_damage(damage: int):
-	#player_death.emit()
-	get_tree().change_scene_to_file("res://mainmenu.tscn")
-	pass
+func _process(delta):
+	$Counter.text = "Counter current:" + str(counter)
+	var abs_rot = rotation_degrees + 180
+	if abs_rot == previous_rotation:
+		previous_rotation = abs_rot;
+		pass
+	
+	var rotation_diff = abs_rot - previous_rotation;
+	previous_rotation = abs_rot
+	if rotation_diff == 0:
+		pass
+	var direction : bool = rotation_diff >0;
+	
+	if direction != previous_direction:
+		start_rotation = rotation_degrees + 180;
+		previous_direction = direction
+		circling = false
+		pass
+	else:
+		var greater = abs(start_rotation -5)
+		var lessthan = min(start_rotation+5, 360)
+		var opp_angle = abs(start_rotation -180)
+		if abs_rot >= greater && abs_rot <= lessthan && circling:
+			circling = false
+			counter+=1
+		elif abs_rot >= abs(opp_angle-5) && abs_rot <= min(opp_angle+5,360):
+			circling = true
+	
+	
 
-func _on_weapon_has_bonked():
-	spin_force *= 0.9
-	pass # Replace with function body.
+	pass
+	
+func _physics_process(delta):
+	var player_rotation = rotation_degrees
+	var rotation_difference = player_rotation;
+	
+	get_input();
+	move_and_slide();
+	pass
